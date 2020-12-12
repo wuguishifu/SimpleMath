@@ -71,6 +71,52 @@ public class Vector3f {
     }
 
     /**
+     * getter method
+     * @return - the x component of this vector
+     */
+    public float getX() {
+        return this.x;
+    }
+
+    /**
+     * getter method
+     * @return - the y component of this vector
+     */
+    public float getY() {
+        return this.y;
+    }
+
+    /**
+     * getter method
+     * @return - the z component of this vector
+     */
+    public float getZ() {
+        return this.z;
+    }
+
+    /**
+     * getter method
+     * @return - the components of this vector as a float array
+     */
+    public float[] getValsAsArr() {
+        return new float[]{x, y, z};
+    }
+
+    /**
+     * get a specified component
+     * @param c - the integer position of the component index starting at 1 (1 = x, 2 = y, 3 = z)
+     * @return - the value at position c
+     */
+    public float getVal(int c) {
+        switch (c) {
+            case 1  : return this.x;
+            case 2  : return this.y;
+            case 3  : return this.z;
+            default : return -1;
+        }
+    }
+
+    /**
      * creates a unit vector
      * @return - a unit vector in the x direction
      */
@@ -239,6 +285,11 @@ public class Vector3f {
         return new Vector3f(x, y, z);
     }
 
+    /**
+     * test if two objects are vectors exactly equal to each other
+     * @param o - the other object
+     * @return - boolean true if the objects are vectors exactly equal to each other
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -247,11 +298,35 @@ public class Vector3f {
         return v.x == this.x && v.y == this.y && v.z == this.z;
     }
 
+    /**
+     * test if two objects are vectors approximately equal to each other
+     * @param o - the other object
+     * @param epsilon - the error
+     * @return - boolean true if the objects are vectors whose corresponding components are within epsilon of each other
+     */
+    public boolean equals(Object o, float epsilon) {
+        if (this == o) return true;
+        if (!(o instanceof Vector3f)) return false;
+        Vector3f v = (Vector3f) o;
+        return
+                Math.abs(this.x - v.x) < epsilon &&
+                Math.abs(this.y - v.y) < epsilon &&
+                Math.abs(this.z - v.z) < epsilon;
+    }
+
+    /**
+     * generates a hash code using prime coefficients on x, y, z
+     * @return - the hash code
+     */
     @Override
     public int hashCode() {
         return 97 * (int)x + 89 * (int)y + 83 * (int)z;
     }
 
+    /**
+     * generates a human-readable string representation of the vector in the form <x, y, z>
+     * @return - the string
+     */
     @Override
     public String toString() {
         return "<" + x + ", " + y + ", " + z + ">";
