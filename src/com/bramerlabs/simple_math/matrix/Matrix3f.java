@@ -68,6 +68,22 @@ public class Matrix3f {
     }
 
     /**
+     * constructor for cloning another matrix
+     * @param M - the matrix to be cloned
+     */
+    public Matrix3f(Matrix3f M) {
+        this.e11 = M.e11;
+        this.e12 = M.e12;
+        this.e13 = M.e13;
+        this.e21 = M.e21;
+        this.e22 = M.e22;
+        this.e23 = M.e23;
+        this.e31 = M.e31;
+        this.e32 = M.e32;
+        this.e33 = M.e33;
+    }
+
+    /**
      * creates a new identity matrix
      * @return - I
      */
@@ -102,7 +118,7 @@ public class Matrix3f {
     }
 
     /**
-     * generates a scaling matrix from a Vector3f
+     * creates a scaling matrix from a Vector3f
      * @param v - the vector
      * @return - the scaling matrix
      */
