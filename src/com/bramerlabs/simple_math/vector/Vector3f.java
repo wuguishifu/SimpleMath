@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Vector3f {
 
     // x, y, z components of this vector
-    private float x, y, z;
+    public float x, y, z;
 
     /**
      * constructor for 3 specified values

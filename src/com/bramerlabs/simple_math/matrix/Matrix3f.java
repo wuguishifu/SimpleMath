@@ -1,5 +1,7 @@
 package com.bramerlabs.simple_math.matrix;
 
+import com.bramerlabs.simple_math.vector.Vector3f;
+
 public class Matrix3f {
 
     // the values in this matrix
@@ -63,5 +65,48 @@ public class Matrix3f {
         this.e31 = v[2][0];
         this.e32 = v[2][1];
         this.e33 = v[2][2];
+    }
+
+    /**
+     * creates a new identity matrix
+     * @return - I
+     */
+    public static Matrix3f identity() {
+        return new Matrix3f(new float[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}});
+    }
+
+    /**
+     * creates a new identity matrix
+     * @return - I
+     */
+    public static Matrix3f I() {
+        return new Matrix3f(new float[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}});
+    }
+
+    /**
+     * performs scalar multiplication on this matrix
+     * @param val - the scalar
+     * @return - this matrix
+     */
+    public Matrix3f scalarMult(float val) {
+        this.e11 *= val;
+        this.e12 *= val;
+        this.e13 *= val;
+        this.e21 *= val;
+        this.e22 *= val;
+        this.e23 *= val;
+        this.e31 *= val;
+        this.e32 *= val;
+        this.e33 *= val;
+        return this;
+    }
+
+    /**
+     * generates a scaling matrix from a Vector3f
+     * @param v - the vector
+     * @return - the scaling matrix
+     */
+    public Matrix3f createScaleMat(Vector3f v) {
+        return new Matrix3f(new float[][]{{v.x, 0, 0}, {0, v.y, 0}, {0, 0, v.z}});
     }
 }
